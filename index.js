@@ -482,14 +482,15 @@ var MPPG = function () {
      */
 
   }, {
-    key: 'getNextSibligPath',
-    value: function getNextSibligPath(mpath) {
-      mpath = this.cleanStr(mpath);
-      this.testPathLength(mpath);
-      if (mpath.length === this.idLength) {
-        return this.getNextId(mpath);
+    key: 'getNextSiblingPath',
+    value: function getNextSiblingPath(mpath) {
+        mpath = this.cleanStr(mpath);
+        this.testPathLength(mpath);
+        if (mpath.length === this.idLength) {
+          return this.getNextId(mpath);
+        }
+        return (mpath.slice(0, -this.idLength) + this.getNextId(mpath.slice(mpath.length - this.idLength)))
       }
-    }
 
     /**
      * Returns the next child path by appending the first path id onto the provided path.
